@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import kafkautils
+
+from charmhelpers.core import hookenv, host
+from charms.reactive import is_state
+
+
+if not is_state('kafka.started'):
+    kafkautils.fail('Kafka service not yet ready', 'Please deploy kafka and required relations')
+
+
+# List zookeepers if kafka is running
+if host.service_available('kafka-server') and host.service_running('kafka-server'):
+    zookeepers = kafkautils.get_zookeepers()
+    if zookeepers:
+        hookenv.action_set({'output': zookeepers})
+    else:
+        kafkautils.fail('No zookeeper.connect string found', 'Please relate kafka to zookeeper')
+else:
+    kafkautils.fail('Kafka service is not running', 'Please start kafka-server')

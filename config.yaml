@@ -1,0 +1,7 @@
+options:
+    resources_mirror:
+        type: string
+        default: ''
+        description: |
+            URL used to fetch resources instead of the
+            location specified in resources.yaml.
