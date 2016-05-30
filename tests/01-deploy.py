@@ -15,7 +15,7 @@ class TestDeploy(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.d = amulet.Deployment(series='trusty')
-        cls.d.add('kafka', 'local:trusty/apache-bigtop-kafka')
+        cls.d.add('kafka', 'apache-bigtop-kafka')
         cls.d.add('jdk', 'openjdk')
         cls.d.add('zk', 'apache-zookeeper')
         cls.d.relate('kafka:zookeeper', 'zk:zkclient')
