@@ -27,9 +27,9 @@ class Kafka(object):
 
         roles = ['kafka-server']
         override = {
-            'bigtop::kafka_broker_id': unit_num,
-            'bigtop::kafka_port': kafka_port,
-            'bigtop::kafka_zookeeper_connection_string': zk_connect,
+            'kafka::server::broker_id': unit_num,
+            'kafka::server::port': kafka_port,
+            'kafka::server::zookeeper_connection_string': zk_connect,
         }
 
         bigtop = Bigtop()
